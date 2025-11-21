@@ -20,23 +20,21 @@ def muon_monte_carlo_rest_frame(n0, lmbda, steps):
     return decay_mc, t_half_mc
 
 # Parameters
-n0 = 1000000
-t_half = 2.2*10**-6  # half-life in seconds
+n0 = 1000
+t_half = 2.2  # half-life in seconds
 lmbda = np.log(2) / t_half          # decay constant
-steps = 20              # number of simulation steps
+steps = 200            # number of simulation steps
 
 # Run the Monte Carlo simulation
 decay_mc, t_half_mc = muon_monte_carlo_rest_frame(n0, lmbda, steps)
 time_array = np.arange(steps)
-time_array = time_array * (t_half / (steps / 10))  # scale time array for better visualization
 
 # Plotting
 plt.figure(figsize=(10, 6))
-plt.plot(time_array, decay_mc, label='Monte Carlo Simulation of $\mu$ Decay', color='blue', marker='o', markersize=3)
-plt.xlabel('Time (s)')
+plt.plot(time_array, decay_mc, label='$\mu$ Decay in rest frame', color='blue', marker='o', markersize=3)
+plt.xlabel('Time ($\mu s$)')
 plt.ylabel('Number of Particles')
-plt.title('Monte Carlo Simulation of Radioactive Decay')
-# plt.xlim(0,300) # To make the graph neater in case if the t-half is small
+plt.title('Monte Carlo Simulation of $\mu$ Decay')
 plt.grid(True)
 plt.legend()
 plt.show()
